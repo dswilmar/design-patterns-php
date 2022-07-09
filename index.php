@@ -10,6 +10,8 @@ require_once './src/Strategy/Export.php';
 require_once './src/Strategy/Csv.php';
 require_once './src/Strategy/Pdf.php';
 
+require_once './src/Facade/AccountRecovery.php';
+
 //Singleton - Garantindo uma única instancia
 var_dump(Database::getInstance());
 sleep(1);
@@ -26,3 +28,7 @@ $e->export();
 
 $p = new Export($pdf);
 $p->export();
+
+//Facade - Fornecer uma chamada simples para diversas operações/subsistemas
+$accountRecovery = new AccountRecovery('dswilmar@gmail.com');
+$accountRecovery->execute();
